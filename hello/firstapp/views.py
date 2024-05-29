@@ -19,6 +19,6 @@ def products(request, productid=1):
     return HttpResponse(output)
 
 
-def users(request, id, name):
+def users(request, id=1, name='Максим'):
     output = "<h2>Пользователь</h2><h3>id: {0} Имя:{1}</hЗ>".format(id, name)
     return HttpResponse(output)
