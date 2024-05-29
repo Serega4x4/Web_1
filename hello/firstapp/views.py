@@ -15,10 +15,13 @@ def contact(request):
 
 
 def products(request, productid=1):
-    output = "<h2>Продукт № {0}</h2>".format(productid)
+    category = request.GET.get('cat', 'Не задана')
+    output = '<h2>продукт № {0} Категория: {1}</h2>'.format(productid, category)
     return HttpResponse(output)
 
 
-def users(request, id=1, name='Максим'):
+def users(request):
+    id = request.GET.get('id', 'Не задано')
+    name = request.GET.get('name', 'Не задано')
     output = "<h2>Пользователь</h2><h3>id: {0} Имя:{1}</hЗ>".format(id, name)
     return HttpResponse(output)
