@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect, HttpResponseBadRequest, \
+    HttpResponseForbidden
 from django.shortcuts import render
 
 
@@ -11,7 +12,8 @@ def about(request):
 
 
 def contact(request):
-    return HttpResponse("<h2>Контакты</h2>")
+    return HttpResponseRedirect("/about")
+    # return HttpResponse("<h2>Контакты</h2>")
 
 
 def products(request, productid=1):
@@ -25,3 +27,15 @@ def users(request):
     name = request.GET.get('name', 'Не задано')
     output = "<h2>Пользователь</h2><h3>id: {0} Имя:{1}</hЗ>".format(id, name)
     return HttpResponse(output)
+
+
+def details(request):
+    return HttpResponsePermanentRedirect("/")
+
+def access(request, age):
+    if age not in range(1, 111):
+        return HttpResponseBadRequest("Некорретные данные")
+    if age > 17:
+        return HttpResponse("Доступ разрешен")
+    else:
+        return HttpResponseForbidden("Доступ заблокирован: недостаточно лет")
