@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("<h2>Главная</h2>")
+    return render(request, 'index.html')
 
 
 def about(request):
@@ -31,6 +31,7 @@ def users(request):
 
 def details(request):
     return HttpResponsePermanentRedirect("/")
+
 
 def access(request, age):
     if age not in range(1, 111):
