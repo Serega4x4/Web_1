@@ -5,13 +5,18 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    # return TemplateResponse(request, 'firstapp/home.html')
+    header = "Персональные данные"
+    langs = {"Английский", "Немецкий", "Итальянский"}
+    user = {"name": "Максим", "age": 30}
+    addr = {"Виноградная", 23, 45}
     data = {
-        'header': "Передача параметров в шаблон Django",
-        'message': "Загружен шаблон template/firstapp1.html",
+        'header': header,
+        "langs": langs,
+        "user": user,
+        "address": addr,
     }
 
-    return render(request, "firstapp/index_app1.html", context=data)
+    return TemplateResponse(request, "index.html", data)
 
 
 def about(request):
