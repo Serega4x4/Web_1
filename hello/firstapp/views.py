@@ -1,10 +1,11 @@
 from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect, HttpResponseBadRequest, \
     HttpResponseForbidden
 from django.shortcuts import render
+from django.template.response import TemplateResponse
 
 
 def index(request):
-    return render(request, 'firstapp/home.html')
+    return TemplateResponse(request, 'firstapp/home.html')
 
 
 def about(request):
