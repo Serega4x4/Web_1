@@ -5,7 +5,13 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    return TemplateResponse(request, 'firstapp/home.html')
+    # return TemplateResponse(request, 'firstapp/home.html')
+    data = {
+        'header': "Передача параметров в шаблон Django",
+        'message': "Загружен шаблон template/firstapp1.html",
+    }
+
+    return render(request, "firstapp/index_app1.html", context=data)
 
 
 def about(request):
