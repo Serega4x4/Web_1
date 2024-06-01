@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>привет Django</title>
+    <title>Шаблоны</title>
 </head>
 <body>
     <h1>{{ header }}</h1>
-    <p>{{ message }}</p>
+    {% if num == 1 %}
+        {{ var1 }}
+    {% else %}
+        {{ var2 }}
+    {% endif %}
 </body>
 </html>

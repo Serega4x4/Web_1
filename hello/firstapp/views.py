@@ -5,18 +5,18 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    header = "Персональные данные"
-    langs = {"Английский", "Немецкий", "Итальянский"}
-    user = {"name": "Максим", "age": 30}
-    addr = {"Виноградная", 23, 45}
+    header = "Развлетвления в шаблонах"
+    num = 2
+    var1 = "Это первая ветка в инструкции if"
+    var2 = "Это вторая ветка в инстукции if"
     data = {
         'header': header,
-        "langs": langs,
-        "user": user,
-        "address": addr,
+        "num": num,
+        "var1": var1,
+        "var2": var2,
     }
 
-    return TemplateResponse(request, "index.html", data)
+    return TemplateResponse(request, "firstapp/index_app1.html", data)
 
 
 def about(request):
@@ -25,7 +25,6 @@ def about(request):
 
 def contact(request):
     return HttpResponseRedirect("/about")
-    # return HttpResponse("<h2>Контакты</h2>")
 
 
 def products(request, productid=1):
