@@ -5,13 +5,12 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    return render(request, "firstapp/home.html")
+    return render(request, "firstapp/index.html")
 
 
-def access(request, age):
-    if age not in range(1, 111):
-        return HttpResponseBadRequest("Некорретные данные")
-    if age > 17:
-        return HttpResponse("Доступ разрешен")
-    else:
-        return HttpResponseForbidden("Доступ заблокирован: недостаточно лет")
+def about(request):
+    return render(request, 'firstapp/about.html')
+
+
+def contact(request):
+    return render(request, 'firstapp/contact.html')
