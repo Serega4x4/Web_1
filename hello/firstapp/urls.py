@@ -1,14 +1,11 @@
 from django.urls import path, re_path
+from django.views.generic import TemplateView
+
 from . import views
 
 urlpatterns = [
-    re_path(r'^contact/', views.contact),
-    re_path(r'^about/', views.about),
-    path('products/', views.products),
-    path('products/<int:productid>/', views.products),
-    path('users/<int:id>/<name>/', views.users),
-    path('users/', views.users),
-    path('details/', views.details),
     path('', views.index, name='index'),
-    path('access/<int:age>', views.access),
+    path('about/', TemplateView.as_view(template_name="firstapp/about.html")),
+    path('contact/', TemplateView.as_view(template_name="firstapp/contact.html",
+                                          extra_context={'work': "Разработка программных продуктов"})),
 ]
