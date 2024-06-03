@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 <head>
-    <style>h1 {color: red;}</style>
-    <style>h2 {color: blue; font-sixe: 22px;}</style>
-
     <meta charset="UTF-8">
     <title>Привет Django</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <h1 style="color: green">Домашняя страница Django</h1>
-    <h2 style="color: red">templates/firstapp/home.html</h2>
+    <h1>Домашняя страница Django</h1>
+    <h2>templates/firstapp/home.html</h2>
+    <img src="{% static 'images/image1.jpg' %}">
 </body>
 </html>
