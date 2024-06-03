@@ -5,18 +5,7 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    header = "Развлетвления в шаблонах"
-    num = 2
-    var1 = "Это первая ветка в инструкции if"
-    var2 = "Это вторая ветка в инстукции if"
-    data = {
-        'header': header,
-        "num": num,
-        "var1": var1,
-        "var2": var2,
-    }
-
-    return TemplateResponse(request, "firstapp/index_app1.html", data)
+    return render(request, "firstapp/home.html")
 
 
 def about(request):
