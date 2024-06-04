@@ -5,7 +5,13 @@ from django.template.response import TemplateResponse
 
 
 def index(request):
-    return render(request, "firstapp/index.html")
+    my_kv = ['I квартал ->', 'II квартал ->', 'III квартал ->', 'IV квартал ->']
+    my_month = ['Январь', 'Февраль', 'Март',
+                'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь',
+                'Октябрь', 'Ноябрь', 'декабрь']
+    context = {'my_month': my_month, 'my_kv': my_kv}
+    return render(request, "firstapp/index.html", context)
 
 
 def about(request):
