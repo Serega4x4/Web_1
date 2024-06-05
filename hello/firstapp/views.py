@@ -2,16 +2,13 @@ from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpRespons
     HttpResponseForbidden
 from django.shortcuts import render
 from django.template.response import TemplateResponse
+from .forms import UserForm
 
 
 def index(request):
-    my_kv = ['I квартал ->', 'II квартал ->', 'III квартал ->', 'IV квартал ->']
-    my_month = ['Январь', 'Февраль', 'Март',
-                'Апрель', 'Май', 'Июнь',
-                'Июль', 'Август', 'Сентябрь',
-                'Октябрь', 'Ноябрь', 'декабрь']
-    context = {'my_month': my_month, 'my_kv': my_kv}
-    return render(request, "firstapp/index.html", context)
+    my_text = 'Изучаем формы Django'
+    context = {'my_text': my_text}
+    return render(request, 'firstapp/index.html', context)
 
 
 def about(request):
@@ -20,3 +17,9 @@ def about(request):
 
 def contact(request):
     return render(request, 'firstapp/contact.html')
+
+
+def my_form(request):
+    my_form = UserForm()
+    context = {'form': my_form}
+    return render(request, 'firstapp/my_form.html', context)
