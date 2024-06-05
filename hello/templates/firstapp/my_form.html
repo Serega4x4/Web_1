@@ -3,8 +3,13 @@
 {% block header %}Изучаем формы Django{% endblock header %}
 {% block content %}
 <div class="container-fluid my-2 border-3">
-    <table>
-        {{ form }}
-    </table>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
 </div>
+
 {% endblock content %}
