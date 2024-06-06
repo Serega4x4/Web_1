@@ -2,6 +2,5 @@ from django import forms
 
 
 class UserForm(forms.Form):
-    name = forms.CharField(label='Имя')
-    age = forms.IntegerField(label='Возраст')
-    comment = forms.CharField(label='Комментарий', widget=forms.Textarea)
+    name = forms.CharField(label='Имя', help_text='Введите ФИО')
+    age = forms.IntegerField(label='Возраст', help_text='Введите возраст')
