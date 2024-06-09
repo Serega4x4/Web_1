@@ -6,5 +6,3 @@ class UserForm(forms.Form):
                            widget=forms.TextInput(attrs={'class': 'myfield'}))
     age = forms.IntegerField(label='Возраст клиента',
                              widget=forms.TextInput(attrs={'class': 'myfield'}))
-    # required_css_class = 'field'
-    # error_css_class = 'error'
