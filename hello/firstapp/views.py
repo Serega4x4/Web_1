@@ -1,9 +1,7 @@
-from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect, HttpResponseBadRequest, \
-    HttpResponseForbidden
 from django.shortcuts import render, redirect
-from django.template.response import TemplateResponse
 from .forms import UserForm
 from .models import Person
+from django.http import HttpResponseNotFound
 
 
 def index(request):
@@ -32,3 +30,24 @@ def my_form(request):
     form = UserForm()
     context = {'my_text': my_text, 'people': people, 'form': form}
     return render(request, 'firstapp/my_form.html', context)
+
+
+def edit_form(request, id):
+    person = Person.object_person.get(id=id)
+    if request.method == 'POST':
+        person.name = request.POST.get('name')
+        person.age = request.POST.get('age')
+        person.save()
+        return redirect('my_form')
+    data = {'person': person}
+    return render(request, 'firstapp/edit_form.html', context=data)
+
+
+def delete(request, id):
+    try:
+        person = Person.object_person.get(id=id)
+        person.delete()
+        return redirect('my_form')
+    except Person.DoesNotExist:
+        return HttpResponseNotFound('<h2>Объект не найден</h2>')
+
