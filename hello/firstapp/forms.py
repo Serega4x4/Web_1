@@ -1,5 +1,5 @@
 from django import forms
-from .models import Person
+from .models import Person, Image
 
 
 class UserForm(forms.ModelForm):
@@ -10,4 +10,10 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = Person
+        fields = '__all__'
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
         fields = '__all__'

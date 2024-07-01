@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm
-from .models import Person
+from .forms import UserForm, ImageForm
+from .models import Person, Image
 from django.http import HttpResponseNotFound
 
 
@@ -51,3 +51,23 @@ def delete(request, id):
     except Person.DoesNotExist:
         return HttpResponseNotFound('<h2>Объект не найден</h2>')
 
+
+def form_up_img(request):
+    if request == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    my_text = 'Загруженные изображения'
+    my_img = Image.obj_img.all()
+    form = ImageForm()
+    context = {'my_text': my_text, 'my_img': my_img, 'form': form}
+    return render(request, 'firstapp/form_up_img.html', context)
+
+
+def delete_img(request):
+    try:
+        img = Image.obj_img.get(id=id)
+        img.delete()
+        return redirect('form_up_img')
+    except Person.DoesNotExist:
+        return HttpResponseNotFound('<h2>Объект не найден</h2>')
