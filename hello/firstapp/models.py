@@ -38,7 +38,7 @@ class Account(models.Model):
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=100, null=False, verbose_name='Описание изобпажения')
+    title = models.CharField(max_length=100, null=False, verbose_name='Описание изображения')
     image = models.ImageField(upload_to='images', verbose_name='Файл с изображениями', null=True, blank=True)
     obj_img = models.Manager()
 
