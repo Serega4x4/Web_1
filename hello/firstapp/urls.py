@@ -16,4 +16,6 @@ urlpatterns = [
     path('form_up_pdf/delete_pdf/<int:id>/', views.delete_pdf),
     path('form_up_video/', views.form_up_video, name='form_up_video'),
     path('form_up_video/delete_video/<int:id>/', views.delete_video),
+    path('form_up_audio/', views.form_up_audio, name='form_up_audio'),
+    path('form_up_audio/delete_audio/<int:id>', views.form_up_audio),
 ]

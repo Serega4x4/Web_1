@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm, ImageForm, FileForm, VideoForm
-from .models import Person, Image, File, VideoFile
+from .forms import UserForm, ImageForm, FileForm, VideoForm, AudioForm
+from .models import Person, Image, File, VideoFile, AudioFile
 from django.http import HttpResponseNotFound
 
 
@@ -111,6 +111,27 @@ def delete_video(request, id):
         video = VideoFile.obj_video.get(id=id)
         video.delete()
         return redirect('form_up_video')
+    except Person.DoesNotExist:
+        return HttpResponseNotFound('<h2>Объект не найден</h2>')
+
+
+def form_up_audio(request):
+    if request.method == 'POST':
+        form = AudioForm(request.POST, request.FILE)
+        if form.is_valid():
+            form.save()
+    my_text = 'Загруженные аудиофайлы'
+    form = AudioFile()
+    file_obj = AudioFile.obj_audio.all()
+    context = {'my_text': my_text, 'file_obj': file_obj, 'form': form}
+    return render(request, 'firstapp/form_up_audio.html', context)
+
+
+def delete_audio(request, id):
+    try:
+        audio = AudioFile.obj_audio.get(id=id)
+        audio.delete()
+        return redirect('form_up_audio')
     except Person.DoesNotExist:
         return HttpResponseNotFound('<h2>Объект не найден</h2>')
 
