@@ -1,5 +1,5 @@
 from django import forms
-from .models import Person, Image, File
+from .models import Person, Image, File, VideoFile
 
 
 class UserForm(forms.ModelForm):
@@ -23,3 +23,10 @@ class FileForm(forms.ModelForm):
     class Meta:
         model = File
         fields = '__all__'
+
+
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model = VideoFile
+        fields = '__all__'
+
